@@ -1,0 +1,556 @@
+// variables
+$light: #FFFFFF
+$dark: #282C33
+$primary: #C778DD
+$ghost: #ABB2BF
+
+@mixin animate-color()
+	transition: 0.1s linear color
+	cursor: pointer
+	&:hover
+		color: $primary
+
+.button
+	border: 1px $primary solid
+	padding: 1em
+	transition: background-color 0.1s linear
+	display: inline-block
+	cursor: pointer
+	&:hover
+		background-color: $primary
+
+.button-gray
+	color: $ghost
+
+	border: 1px $ghost solid
+	padding: 1em
+	transition: background-color 0.1s linear
+	display: inline-block
+	cursor: pointer
+	&:hover
+		color: $primary
+		border: 1px $primary solid
+
+.container
+	max-width: 100rem
+	width: 90%
+	margin-inline: auto
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+	color: $light
+	font-family: 'Fira Code', monospace
+
+a
+	text-decoration: none
+
+html
+	background-color: $dark
+
+// nav bar
+.sticky
+	position: fixed
+	top: 0
+
+nav
+	margin-right: auto
+	margin-left: auto
+	padding: 2em .5em
+	background-color: $dark
+
+	width: 100%
+	font-size: 1em
+	overflow: hidden
+	.container
+		font-size: 1em
+		display: flex
+		align-items: center
+		justify-content: space-between
+		.left
+			display: flex
+			align-items: center
+
+			.logo
+				height: 1em
+
+			.title
+				margin-left: .5em
+				font-weight: 700
+				@include animate-color()
+
+		.center
+			display: flex
+			flex-direction: row
+			gap: 3em
+			a
+				color: $light
+				font-weight: 500
+				@include animate-color()
+
+			span
+				color: $primary
+
+		.right
+			display: flex
+			align-items: center
+			gap: 1em
+			.language
+				color: $ghost
+.menu
+	display: none
+.overlay
+	display: none
+
+@media( max-width: 756px )
+	nav
+		.container
+			.center
+				gap: 1em
+
+@media( max-width: 649px )
+
+	nav
+
+		.container
+			.center
+				display: flex
+				flex-direction: column
+				position: fixed
+				top: -17%
+				right: 0
+				width: 100%
+				text-align: center
+				background: $dark
+				transition: top 0.3s ease-in
+
+			.right
+				display: flex
+				flex-direction: row
+				position: fixed
+				right: 0
+				top: -17%
+				width: 100%
+				justify-content: center
+				background: $dark
+				transition: top 0.3s ease-in
+
+			.center-open
+				display: flex
+				top: 0%
+				right: 0
+			.right-open
+				display: flex
+				right: 0
+				top: 132px
+
+	.menu
+		display: inline-block
+		fill: $light !important
+		width: 40px
+	.overlay
+		position: fixed
+		top: 19%
+		left: 0
+		display: none
+		width: 100vh
+		height: 100vh
+		background-color: rgba(0, 0, 0, 0.2)
+		transition: all 0.3s ease-in
+	.overlay-open
+		display: block
+
+//	 main
+
+.open
+	margin-top: 100px
+	.container
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: center
+	.left
+		display: flex
+		flex-direction: column
+		gap: 2em
+		width: 40%
+		h1
+			font-weight: 600
+			font-size: 2em
+			line-height: 1.5em
+			width: 100%
+		p
+			font-weight: 400
+			color: $ghost
+			font-size: 1em
+			width: 100%
+
+		.button
+			width: 10em
+
+	.right
+		display: flex
+		flex-direction: column
+		align-items: center
+		width: 40%
+		gap: 1em
+		img
+			width: 90%
+			background-image: url('/imgs/primarylogo.png'),url('/imgs/Dots.png')
+			background-repeat: no-repeat, no-repeat
+			background-position: 0% 20%,100% 50%
+
+		.info
+			display: flex
+			align-items: center
+			padding: .5em
+			border: 1px solid $ghost
+			.cube
+				width: 1em
+				height: 1em
+				background: $primary
+				margin-right: .5em
+			.text
+				color: $ghost
+				font-weight: 600
+@media( max-width: 756px )
+	.open
+		.container
+			flex-direction: column
+			.left
+				width: 100%
+			.right
+				width: 100%
+
+// quote 
+.quote
+	margin-top: 7em
+	margin-bottom: 7em
+	display: flex
+	justify-content: center
+	.container
+		width: 40%
+
+	.text
+		font-weight: 500
+		font-size: 1.5em
+		color: $light
+		border: 1px solid $ghost
+		padding: 2em
+	.author
+		font-weight: 400
+		font-size: 1.5em
+		color: $light
+		border: 1px solid $ghost
+		padding: 1em
+		width: 40%
+		margin-left: auto
+		height: 4em
+
+@media( max-width: 1124px )
+	.quote
+		.container
+			width: 80%
+			.author
+				text-align: center
+				margin: auto
+				width: 50%
+
+// projects
+
+.heading-wrapper
+	display: flex
+	gap: 1em
+	.heading
+		font-weight: 500
+		font-size: 32px
+		min-width: auto
+	.line
+		margin-top: 1em
+		border-top: 1px solid $primary
+		width: 100%
+
+.projects
+	.container
+		.heading-wrapper
+			display: flex
+			gap: 1em
+
+			.line
+				margin-top: 1em
+				border-top: 1px solid $primary
+				width: 100%
+		.proj-wrapper
+			margin-top: 3em
+			width: 100%
+			margin-inline: auto
+			display: grid
+			grid-template-columns: 1fr 1fr 1fr
+			gap: 1em
+			.project
+				border: 1px $ghost solid
+				img
+					width: 100%
+				.skill
+					font-weight: 400
+					font-size: 16px
+					line-height: 21px
+					color: $ghost
+					border-bottom: 1px $ghost solid
+					padding: .5em
+				.title
+					font-weight: 500
+					font-size: 24px
+					line-height: 31px
+					color: $light
+					padding: 16px
+				.about
+					font-weight: 400
+					font-size: 16px
+					line-height: 21px
+					color: $ghost
+					padding: 0 1em 1em 1em
+				.button
+					display: inline-block
+					margin: 0 0 1em 1em
+				.button-gray
+					display: inline-block
+					margin: 0 0 1em 1em
+
+@media( max-width: 756px )
+	.projects
+		.container
+			.proj-wrapper
+				grid-template-columns: 1fr
+
+.small-projects
+	margin-top: 10em
+	.heading
+		margin-bottom: 1em
+	.wrapper
+		display: grid
+		width: 100%
+		margin-inline: auto
+		display: grid
+		grid-template-columns: 1fr 1fr 1fr
+		gap: 1em
+		.item
+			border: 1px $ghost solid
+
+			.skill
+				font-weight: 400
+				font-size: 16px
+				line-height: 21px
+				color: $ghost
+				border-bottom: 1px $ghost solid
+				padding: .5em
+			.title
+				font-weight: 500
+				font-size: 1.5em
+				line-height: 31px
+				padding: 16px
+			.about
+				color: #ABB2BF
+				font-weight: 400
+				font-size: 16px
+				line-height: 21px
+				padding: 0 1em 1em 1em
+			.button
+				margin-left: 1em
+				margin-bottom: 1em
+
+@media( max-width: 756px )
+	.small-projects
+		.wrapper
+			grid-template-columns: 1fr
+
+.about-me
+	margin-top: 7em
+	.heading-wrapper
+		display: flex
+		gap: 1em
+		margin-bottom: 3em
+		h2
+			display: inline-block
+			width: 200px
+
+		.line
+			margin-top: 1em
+			border-top: 1px solid $primary
+			width: 87%
+	.wrapper
+		display: flex
+		justify-content: space-between
+		div
+			width: 50%
+			display: flex
+			flex-direction: column
+			align-items: center
+			gap: 3em
+			p
+				font-weight: 400
+				font-size: 16px
+				line-height: 21px
+				color: $ghost
+				width: 70%
+			img
+				height: auto
+				width: 50%
+@media( max-width: 756px )
+	.about-me
+		.heading-wrapper
+			h2
+				width: 100%
+		.wrapper
+			flex-direction: column
+			div
+				width: 100%
+
+// skills
+
+.skills
+	margin-top: 7em
+	.wrapper
+		margin-top: 54px
+		display: flex
+		align-items: center
+		justify-content: space-between
+		.left
+			width: 50%
+			height: 400px
+			background-image: url('/imgs/Dots.png'),url('/imgs/gs.png'),url('/imgs/square.png'),url('/imgs/square.png')
+			background-position: 50% 40%,10% 70%, 80% 10%,70% 80%
+			background-size: 10%, 15%,10%,15%
+			background-repeat: no-repeat
+			img
+				width: 100px
+				height: auto
+
+		.right
+			width: 50%
+			display: grid
+			grid-template-areas: 'i1 i2 i3''.i4 i5'
+			gap: 1em
+		.i1
+			grid-area: i1
+		.i2
+			grid-area: i2
+		.i3
+			grid-area: i3
+		.i4
+			grid-area: i4
+		.i5
+			grid-area: i5
+		.item
+			border: 1px $ghost solid
+			.item-title
+				font-weight: 600
+				color: $light
+				padding: .5em
+				border-bottom: 1px $ghost solid
+			.about
+				font-weight: 400
+				line-height: 30px
+				color: $ghost
+				padding: .5em
+@media( max-width: 756px )
+	.skills
+		.wrapper
+			flex-direction: column
+			.left
+				display: none
+			.right
+				width: 80%
+@media( max-width: 649px )
+	.skills
+		.wrapper
+			.right
+				grid-template-areas: 'i1''i2' 'i3' 'i4' 'i5'
+
+// contacts
+
+.contacts
+	margin-top: 7em
+	.wrapper
+		margin-top: 3em
+		display: flex
+		justify-content: space-between
+		align-items: top
+		p
+			width: 40%
+			color: $ghost
+			font-weight: 500
+
+		.cs
+			width: 200px
+			border: $ghost 1px solid
+			text-align: left
+			padding: 1em
+
+			.div
+				display: inline-block
+				font-weight: 400
+				color: $ghost
+
+@media( max-width: 649px )
+	.contacts
+		.wrapper
+			flex-direction: column
+			p
+				width: 100%
+			.cs
+				text-align: center
+				margin-inline: auto
+				width: 60%
+
+footer
+	margin-top: 7em
+	border-top: 1px $ghost solid
+	padding-top: 2em
+	padding-bottom: 2em
+	.wrapper
+		display: flex
+		justify-content: space-between
+		align-items: center
+		.left
+			img
+				width: 24px
+				height: auto
+				display: inline-block
+			h1
+				font-weight: 700
+				font-size: 24px
+				line-height: 31px
+				display: inline-block
+			h4
+				font-weight: 400
+				font-size: 16px
+				line-height: 21px
+				color: $ghost
+				display: inline-block
+			h3
+				font-weight: 400
+				font-size: 16px
+				line-height: 21px
+				margin-top: 1em
+				width: 90%
+		.right
+			h1
+				font-weight: 500
+				font-size: 24px
+				line-height: 31px
+	.endd
+		display: flex
+		justify-content: center
+		margin-top: 3em
+		.end
+			font-weight: 400
+			font-size: 16px
+			line-height: 21px
+			color: $ghost
+			justify-items: center
+@media( max-width: 649px )
+	footer
+		.wrapper
+			flex-direction: column
